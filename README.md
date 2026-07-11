@@ -1,5 +1,5 @@
 # ALU in Verilog, C and Python
-Practical study guide for Verilog, C, and Python using an ALU as the central project, with digital hardware concepts, reference models, and automated verification.
+Practical study guide for Verilog, C and Python using an ALU as the central project, with digital hardware concepts, reference models, and automated verification.
 
 🚧 This repository is a work in progress.
 
