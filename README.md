@@ -5,7 +5,7 @@ Practical study guide for Verilog, C, and Python using an ALU as the central pro
 
 ![Platform](https://img.shields.io/badge/Platform-FPGA-blue)
 ![Board](https://img.shields.io/badge/Board-PYNQ--Z2-green)
-![IDE](https://img.shields.io/badge/IDE-Vivado%202025.2.1-blue)
+![EDA](https://img.shields.io/badge/EDA-Vivado%202025.2.1-blue)
 ![IDE](https://img.shields.io/badge/IDE-VSCode-blue)
 ![Verilog](https://img.shields.io/badge/Language-Verilog-orange)
 ![C](https://img.shields.io/badge/Language-C-orange)
