@@ -31,7 +31,7 @@ The goal is to build a complete and educational flow:
 ```text
 C generates the expected results
 Verilog implements the hardware
-Python automates compilation, simulation, and comparison
+Python automates compilation, simulation and comparison
 ```
 The content is divided into two volumes:
 
