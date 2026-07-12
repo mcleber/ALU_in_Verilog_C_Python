@@ -24,7 +24,7 @@ Practical study guide for Verilog, C and Python using an ALU as the central proj
 
 ## Overview
 
-This repository presents a **practical study guide** on Verilog, C, and Python using an ALU as the central project.
+This repository presents a **practical study guide** on Verilog, C and Python using an ALU as the central project.
 
 The goal is to build a complete and educational flow:
 
