@@ -81,11 +81,13 @@ Starts from the Volume 1 project and evolves each component:
 | Make              | Simplified execution of the flow          |
 | VSCode            | Editing and debugging the files           |
 | Vivado 2025.2.1   | Synthesis (project, XDC, bitstream, Tcl)  |
+| Pynq-Z2           | Xilinx FPGA Board                         |
 
 ---
 
 ## Repository Structure
 
+```text
 Verilog_C_Python_ALU_Guide/
 |
 ├── assets/
@@ -160,6 +162,7 @@ Verilog_C_Python_ALU_Guide/
 |
 ├── License
 └── README.md
+```
 
 > Files marked with `(Vol. 2)` are introduced or updated in Volume 2. The remaining ones are built throughout Volume 1.
 
