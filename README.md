@@ -151,7 +151,7 @@ Verilog_C_Python_ALU_Guide/
 │   │
 │   ├── synth/                   # Vivado (Vol. 2, Chap. 12)
 │   │   ├── alu_pipeline.xdc     # example constraints, adjust for your board
-│   │   └── build_alu8.tcl       # automation script (vivado -mode batch)
+│   │   └── build_alu8.tcl       # automation script (vivado - mode batch)
 │   │
 │   ├── build/
 │   └── Makefile
