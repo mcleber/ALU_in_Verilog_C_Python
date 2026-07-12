@@ -174,22 +174,22 @@ Verilog_C_Python_ALU_Guide/
 
 | Code | Operation | Description |
 | ---- | --------- | ----------- |
-| `0`  | `ADD`     | `A + B`     |
-| `1`  | `SUB`     | `A - B`     |
-| `2`  | `AND`     | `A & B`     |
-| `3`  | `OR`      | `A \| B`    |
-| `4`  | `XOR`     | `A ^ B`     |
-| `5`  | `NOT`     | `~A`        |
-| `6`  | `SHL`     | `A << 1`    |
-| `7`  | `SHR`     | `A >> 1`    |
+| 0    | ADD       | A + B       |
+| 1    | SUB       | A - B       |
+| 2    | AND       | A & B       |
+| 3    | OR        | A \| B      |
+| 4    | XOR       | A ^ B       |
+| 5    | NOT       | ~A          |
+| 6    | SHL       | A << 1      |
+| 7    | SHR       | A >> 1      |
 
 ### Volume 2 — Expanded 8-bit ALU + 16-bit ALU
 
 | Module                  | Code | Operation | Description                                         |
 | ----------------------- | ---- | --------- | --------------------------------------------------- |
-| `alu8` / `alu8_seq_mul` | `8`  | `NAND`    | `~(A & B)`                                          |
-| `alu16`                 | `9`  | `CMP`     | `0x0000` if equal, `0x0001` if A>B, `0xFFFF` if A<B |
-| `alu8_seq_mul`          | `9`  | `MUL`     | `A × B` (multi-cycle, 8 cycles)                     |
+| alu8 / alu8_seq_mul     | 8    | NAND      | ~(A & B)                                            |
+| alu16                   | 9    | CMP       | 0x0000 if equal, 0x0001 if A>B, 0xFFFF if A<B       |
+| alu8_seq_mul            | 9    | MUL       | A × B (multi-cycle, 8 cycles)                       |
 
 
 > ⚠️ Code `9` is reused across different modules (`alu16` for `CMP`, `alu8_seq_mul` for `MUL`). This does not cause a conflict because each module has its own isolated `op` field, but keep it in mind when reading the table: operation codes are **not global**; they are specific to each ALU.
@@ -198,12 +198,12 @@ Verilog_C_Python_ALU_Guide/
 
 | Flag       | Vol. 1 | Vol. 2 | Description                                |
 | ---------- | ------ | ------ | ------------------------------------------ |
-| `zero`     | ✅      | ✅      | Result equals zero                         |
-| `carry`    | ✅      | ✅      | Carry on addition or borrow on subtraction |
-| `negative` | ✅      | ✅      | Most significant bit of the result is `1`  |
-| `overflow` | ✅      | ✅      | Signed arithmetic overflow                 |
-| `equal`    | —      | ✅      | `A == B` (16-bit ALU)                      |
-| `div_zero` | —      | ✅      | Division by zero detected                  |
+| zero       | ✅     | ✅     | Result equals zero                         |
+| carry      | ✅     | ✅     | Carry on addition or borrow on subtraction |
+| negative   | ✅     | ✅     | Most significant bit of the result is 1    |
+| overflow   | ✅     | ✅     | Signed arithmetic overflow                 |
+| equal      | —      | ✅     | A == B (16-bit ALU)                        |
+| div_zero   | —      | ✅     | Division by zero detected                  |
 
 ---
 
