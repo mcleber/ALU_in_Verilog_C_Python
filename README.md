@@ -102,7 +102,7 @@ Verilog_C_Python_ALU_Guide/
 │   ├── python/
 │   └── verilog/
 │
-├── projeto_alu_integrado/
+├── integrated_alu_project/
 │   ├── c_model/
 │   │   ├── alu_model.h          # 8-bit ALU (Vol. 1)
 │   │   ├── alu_model.c
@@ -255,7 +255,7 @@ make --version
 ## Running the Project
 
 ```bash
-cd projeto_alu_integrado
+cd integrated_alu_project
 make run
 ```
 
