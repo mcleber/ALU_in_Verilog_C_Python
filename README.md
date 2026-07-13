@@ -134,7 +134,6 @@ Verilog_C_Python_ALU_Guide/
 │   │
 │   ├── sim/
 │   │   ├── tb_alu8_file.v
-│   │   ├── tb_alu8_seq_file.v
 │   │   ├── tb_alu16.v
 │   │   ├── tb_alu16_named.v     # Displays operation name on error
 │   │   ├── tb_mul8.v
