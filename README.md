@@ -91,7 +91,7 @@ Starts from the Volume 1 project and evolves each component:
 Verilog_C_Python_ALU_Guide/
 |
 ├── assets/
-│   ├── cover.png
+│   └──cover.png
 │
 ├── docs/
 │   ├── verilog_c_python_alu_practical_guide_vol1.md
