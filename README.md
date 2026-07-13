@@ -306,32 +306,6 @@ Additional commands:
 
 ---
 
-## What Was Implemented
-
-| #     | Item                                               | Volume            |
-| ----- | -------------------------------------------------- | ----------------- |
-| 1     | Add the NAND operation                             | Vol. 2, Chap. 1   |
-| 2     | C test for NAND                                    | Vol. 2, Chap. 1.3 |
-| 3     | Python test for NAND                               | Vol. 2, Chap. 1.4 |
-| 4     | Verilog ALU updated with NAND                      | Vol. 2, Chap. 1.5 |
-| 5     | Vector generator with NAND                         | Vol. 2, Chap. 1.7 |
-| 6     | Complete flow with NAND                            | Vol. 2, Chap. 1.8 |
-| 7     | 16-bit ALU                                         | Vol. 2, Chap. 2   |
-| 8     | `equal` flag                                       | Vol. 2, Chap. 2   |
-| 9     | `CMP` comparison operation                         | Vol. 2, Chap. 2   |
-| 10    | Testbench with operation name on error             | Vol. 2, Chap. 3   |
-| 11    | Python report with pass percentage                 | Vol. 2, Chap. 4   |
-| 12    | Multi-cycle multiplication                         | Vol. 2, Chap. 5   |
-| 13    | FSM updated to wait for multiplication             | Vol. 2, Chap. 5.6 |
-| 14    | Division with `div_zero`                           | Vol. 2, Chap. 6   |
-| 15    | Input queue (FIFO)                                 | Vol. 2, Chap. 7–8 |
-| 16    | Output queue (FIFO)                                | Vol. 2, Chap. 7–8 |
-| 17    | Multiple operations in sequence with handshake     | Vol. 2, Chap. 8   |
-| 18–23 | How to know if you truly learned                   | Vol. 2, Chap. 11  |
-| 24    | Synthesis in Vivado (Project, XDC, Bitstream, Tcl) | Vol. 2, Cap. 12   |
-
----
-
 ## Future Improvements
 
 - Study Hardware Trojans in an ALU (insertion and detection)
