@@ -283,7 +283,7 @@ Additional commands:
 
 ### Volume 1
 
-1. Study the basic examples in C, Python, and Verilog.
+1. Study the basic examples in C, Python and Verilog.
 2. Implement and test the ALU reference model in C.
 3. Run the basic ALU testbench in Verilog.
 4. Use the vector file for automated tests.
