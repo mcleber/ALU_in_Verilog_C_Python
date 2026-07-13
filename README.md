@@ -187,7 +187,7 @@ Verilog_C_Python_ALU_Guide/
 | Module                  | Code | Operation | Description                                         |
 | ----------------------- | ---- | --------- | --------------------------------------------------- |
 | alu8 / alu8_seq_mul     | 8    | NAND      | ~(A & B)                                            |
-| alu16                   | 9    | CMP       | 0x0000 if equal, 0x0001 if A>B, 0xFFFF if A<B       |
+| alu16                   | 9    | CMP       | `0x0000` if equal, `0x0001` if A>B, 0xFFFF if A<B   |
 | alu8_seq_mul            | 9    | MUL       | A × B (multi-cycle, 8 cycles)                       |
 
 
