@@ -1,4 +1,4 @@
-| Title | verilog_c_python_alu_practical_guide_vol1.md |
+| File | verilog_c_python_alu_practical_guide_vol1.md |
 |-------|-------|
 | Date  | 13-Jul-2026 |
 
@@ -373,7 +373,7 @@ int main(void) {
 Compile:
 
 ```bash
-gcc -Wall -Wextra -std=c11 hello.c -o hello
+gcc -Wall -Wextra -std=c2x hello.c -o hello
 ./hello
 ```
 
@@ -537,7 +537,7 @@ int main(void) {
 Compilation:
 
 ```bash
-gcc -Wall -Wextra -std=c11 main_calc.c calc.c -o main_calc
+gcc -Wall -Wextra -std=c2x main_calc.c calc.c -o main_calc
 ./main_calc
 ```
 
@@ -598,7 +598,7 @@ int main(void) {
 Compile:
 
 ```bash
-gcc -Wall -Wextra -std=c11 test_calc.c calc.c -o test_calc
+gcc -Wall -Wextra -std=c2x test_calc.c calc.c -o test_calc
 ./test_calc
 ```
 
@@ -889,7 +889,7 @@ int main(void) {
 Compile:
 
 ```bash
-gcc -Wall -Wextra -std=c11 test_alu_model.c alu_model.c -o test_alu_model
+gcc -Wall -Wextra -std=c2x test_alu_model.c alu_model.c -o test_alu_model
 ./test_alu_model
 ```
 
