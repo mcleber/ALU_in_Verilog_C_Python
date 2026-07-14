@@ -115,9 +115,7 @@ From now on, whenever we create something important, we will also create a test.
 
 ---
 
-## Part 1 — Fundamentals
-
----
+# Part 1 — Fundamentals
 
 ## Chapter 1 — Environment setup
 
@@ -335,7 +333,7 @@ Reset puts the circuit into a known state.
 
 Without reset, an FSM may start in an undefined state.
 
-## 3.7 Automated testing
+### 3.7 Automated testing
 
 An automated test is a test that reports by itself whether it passed or failed.
 
@@ -355,9 +353,7 @@ In this guide, we will always aim for self-checking tests.
 
 ---
 
-## Part 2 — C
-
----
+# Part 2 — C
 
 ## Chapter 4 — Basic C with a focus on hardware models
 
@@ -477,3 +473,10 @@ int main(void) {
     return 0;
 }
 ```
+
+---
+
+## Chapter 5 — Code organization in C
+
+### 5.1 Why split files?
+
