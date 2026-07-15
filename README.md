@@ -95,11 +95,11 @@ Verilog_C_Python_ALU_Guide/
 │
 ├── docs/
 |   ├── vol1_files/
-│   |   ├── verilog_c_python_alu_practical_guide_vol1.md
-│   |   ├── verilog_c_python_alu_practical_guide_vol1.md
-│   |   ├── verilog_c_python_alu_practical_guide_vol1.md
-│   |   ├── verilog_c_python_alu_practical_guide_vol1.md
-│   |   └── verilog_c_python_alu_practical_guide_vol2.md
+│   |   ├── vol1_part_1.md
+│   |   ├── vol1_part_2.md
+│   |   ├── vol1_part_3.md
+│   |   ├── vol1_part_4.md
+│   |   └── vol1_part_5.md
 |   |
 |   ├── vol2_files/
 |   |
