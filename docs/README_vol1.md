@@ -89,7 +89,7 @@ From now on, whenever we create something important, we will also create a test.
 7. Reference model of an ALU in C.
 8. Concurrency and parallelism in C — pthread integrated with the vector generator.
 
-### Part 3 — Python
+### [Part 3 — Python](vol1_files/vol1_part_3.md)
 
 9. Basic Python for automation.
 10. Unit tests in Python.
