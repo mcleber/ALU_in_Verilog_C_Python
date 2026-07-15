@@ -34,10 +34,10 @@ Python automates compilation, simulation and comparison
 ```
 The content is divided into two volumes:
 
-| Volume | File | Content |
-| --- | --- | --- |
-| Volume 1 | [`docs/verilog_c_python_alu_practical_guide_vol1.md`](docs/verilog_c_python_alu_practical_guide_vol1.md) | Fundamentals, 8-bit ALU, pthread, FSM, integrated flow |
-| Volume 2 | [`docs/verilog_c_python_alu_practical_guide_vol2.md`](docs/verilog_c_python_alu_practical_guide_vol2.md) | NAND, 16-bit ALU, multi-cycle multiplication, division, FIFO, pipeline, synthesis in Vivado |
+| Volume | Guide | Content |
+|--------|-------|---------|
+| **Vol.1** | [Practical Guide – Vol.1](docs/verilog_c_python_alu_practical_guide_vol1.md) | Fundamentals, 8-bit ALU, pthread, FSM, integrated flow |
+| **Vol.2** | [Practical Guide – Vol.2](docs/verilog_c_python_alu_practical_guide_vol2.md) | NAND, 16-bit ALU, multi-cycle multiplication, division, FIFO, pipeline, synthesis in Vivado |
 
 ---
 
