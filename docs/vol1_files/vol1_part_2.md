@@ -1,8 +1,7 @@
-
 | Title | Part 2 — C  |
 |-------|-------|
 | File  | `vol1_part_2.md` |
-| Date  | 13 Jul 2026 |
+| Date  | 15 Jul 2026 |
 
 ---
 
