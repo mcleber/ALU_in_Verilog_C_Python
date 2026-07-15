@@ -20,7 +20,9 @@ The main idea is to learn step by step:
 - expand it;
 - integrate Verilog, C and Python into a complete project.
 
-The central project of this guide is an **ALU**, that is, an Arithmetic Logic Unit. The ALU is a great educational project because it lets you study:
+The central project of this guide is an Arithmetic Logic Unit (ALU). 
+
+The ALU is a great educational project because it lets you study:
 
 - arithmetic operations;
 - logic operations;
@@ -59,15 +61,14 @@ The best way to study is:
 7. Fix it.
 8. Only then move on.
 
-Programming and digital hardware are learned through conscious repetition.
+Programming and digital hardware are learned through practice, experimentation, and repetition.
 
-Throughout the guide, we will use three types of code:
+Throughout this guide, we will use three types of code:
 
-```text
-Production code    -> code that implements some functionality
-Test code          -> code that verifies whether the functionality is correct
-Automation code    -> code that compiles, runs, and compares results
-```
+- **Production code** — implements the functionality.
+- **Test code** — verifies whether the implementation is correct.
+- **Automation code** — compiles, executes, and compares the results.
+
 From now on, whenever we create something important, we will also create a test.
 
 ---

@@ -243,6 +243,6 @@ In this guide, we will always aim for self-checking tests.
 
 ---
 
-[Practical Guide – Vol.1](../README_vol1.md)
+← [Back to Index](../README_vol1.md)
 
-[Part 2 — C](vol1_part_2.md)
+Next → [Part 2 — C](vol1_part_2.md)

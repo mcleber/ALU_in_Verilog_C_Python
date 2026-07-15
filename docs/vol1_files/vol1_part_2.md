@@ -4,7 +4,7 @@
 | File  | `vol1_part_2.md` |
 | Date  | 13 Jul 2026 |
 
-
+---
 
 # Part 2 — C
 
@@ -585,8 +585,6 @@ Threads share memory. This is useful, but dangerous if several threads modify th
 
 ---
 
-[Practical Guide – Vol.1](../README_vol1.md)
+← [Back to Index](../README_vol1.md)
 
-[Part 1 — Fundamentals](vol1_part_1.md)
-
-[Part 3 — Python](vol1_part_3.md)
+Previous: [Part 1 — Fundamentals](vol1_part_1.md) | Next: [Part 3 — Python](vol1_part_3.md)
