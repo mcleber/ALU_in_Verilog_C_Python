@@ -36,7 +36,7 @@ The content is divided into two volumes:
 
 | Volume | Guide | Content |
 |--------|-------|---------|
-| **Vol.1** | [Practical Guide – Vol.1](docs/verilog_c_python_alu_practical_guide_vol1.md) | Fundamentals, 8-bit ALU, pthread, FSM, integrated flow |
+| **Vol.1** | [Practical Guide – Vol.1](docs/README_vol1.md) | Fundamentals, 8-bit ALU, pthread, FSM, integrated flow |
 | **Vol.2** | [Practical Guide – Vol.2](docs/verilog_c_python_alu_practical_guide_vol2.md) | NAND, 16-bit ALU, multi-cycle multiplication, division, FIFO, pipeline, synthesis in Vivado |
 
 ---
@@ -94,8 +94,17 @@ Verilog_C_Python_ALU_Guide/
 │   └── cover.png
 │
 ├── docs/
-│   ├── verilog_c_python_alu_practical_guide_vol1.md
-│   └── verilog_c_python_alu_practical_guide_vol2.md
+|   ├── vol1_files/
+│   |   ├── verilog_c_python_alu_practical_guide_vol1.md
+│   |   ├── verilog_c_python_alu_practical_guide_vol1.md
+│   |   ├── verilog_c_python_alu_practical_guide_vol1.md
+│   |   ├── verilog_c_python_alu_practical_guide_vol1.md
+│   |   └── verilog_c_python_alu_practical_guide_vol2.md
+|   |
+|   ├── vol2_files/
+|   |
+│   ├── README_vol1.md
+│   └── README_vol2.md
 │
 ├── examples/
 │   ├── c/
