@@ -579,9 +579,369 @@ Parallelism: two cooks work at the same time.
 
 Threads share memory. This is useful, but dangerous if several threads modify the same variable.
 
+File: `examples/c/thread_counter.c`
 
+```c
+#include <pthread.h>
+#include <stdio.h>
+#include <stdlib.h>
 
+#define N_THREADS 4
+#define N_INC 100000
 
+static int counter = 0;
+static pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+
+void *worker(void *arg) {
+    int id = *(int *)arg;
+
+    for (int i = 0; i < N_INC; i++) {
+        // Critical section: only one thread may enter at a time.
+        pthread_mutex_lock(&mutex);
+        counter++;
+        pthread_mutex_unlock(&mutex);
+    }
+
+    printf("Thread %d finished.\n", id);
+    return NULL;
+}
+
+int main(void) {
+    pthread_t threads[N_THREADS];
+    int ids[N_THREADS];
+
+    for (int i = 0; i < N_THREADS; i++) {
+        ids[i] = i;
+        if (pthread_create(&threads[i], NULL, worker, &ids[i]) != 0) {
+            perror("pthread_create");
+            return 1;
+        }
+    }
+
+    for (int i = 0; i < N_THREADS; i++) {
+        pthread_join(threads[i], NULL);
+    }
+
+    printf("counter = %d\n", counter);
+    printf("expected = %d\n", N_THREADS * N_INC);
+
+    pthread_mutex_destroy(&mutex);
+    return 0;
+}
+```
+
+Compile:
+
+```bash
+gcc -Wall -Wextra -std=c2x thread_counter.c -o thread_counter -pthread
+./thread_counter
+```
+
+### 8.3 Simple unit test for a parallelizable function
+
+Before parallelizing, test the sequential function.
+
+File: `examples/c/vector_sum.h`
+
+```c
+#ifndef VECTOR_SUM_H
+#define VECTOR_SUM_H
+
+#include <stddef.h>
+
+long long vector_sum(const int *v, size_t n);
+
+#endif
+```
+
+File: `examples/c/vector_sum.c`
+
+```c
+#include "vector_sum.h"
+
+long long vector_sum(const int *v, size_t n) {
+    long long sum = 0;
+
+    for (size_t i = 0; i < n; i++) {
+        sum += v[i];
+    }
+
+    return sum;
+}
+```
+
+File: `examples/c/test_vector_sum.c`
+
+```c
+#include <assert.h>
+#include <stdio.h>
+#include "vector_sum.h"
+
+int main(void) {
+    int a[] = {1, 2, 3, 4};
+    int b[] = {-1, 1, -2, 2};
+
+    assert(vector_sum(a, 4) == 10);
+    assert(vector_sum(b, 4) == 0);
+
+    printf("vector_sum test passed.\n");
+    return 0;
+}
+```
+
+Compile:
+
+```bash
+gcc -Wall -Wextra -std=c2x test_vector_sum.c vector_sum.c -o vector_sum -pthread
+./vector_sum
+```
+
+### 8.4 Connecting pthread to the ALU project
+
+Now that we understand threads and mutexes, let's apply this directly to the ALU vector generator.
+
+The idea is to split the input space among threads. Each thread processes a range of `A` values, computes the expected results, and writes to a separate buffer. The main thread joins everything at the end.
+
+#### Why do this?
+
+For vector generation with hundreds of thousands of combinations, parallelism reduces the generation time. More importantly from an educational standpoint: you learn to structure parallel work with shared data safely.
+
+#### Structure of the parallel generator
+
+File: `examples/c/gen_vectors_parallel.h`
+
+```c
+#ifndef GEN_VECTORS_PARALLEL_H
+#define GEN_VECTORS_PARALLEL_H
+
+#include <stdint.h>
+#include <stddef.h>
+
+// Represents one test-vector line.
+typedef struct {
+    uint8_t a;
+    uint8_t b;
+    uint8_t op;
+    uint8_t expected_result;
+    uint8_t zero;
+    uint8_t carry;
+    uint8_t negative;
+    uint8_t overflow;
+} vector_entry_t;
+
+// Result of generating a block of vectors.
+typedef struct {
+    vector_entry_t *entries;
+    size_t          count;
+} vector_block_t;
+
+#endif
+```
+
+File: `examples/c/gen_vectors_parallel.c`
+
+```c
+#include <pthread.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+
+#include <errno.h>
+#include <sys/stat.h>
+
+#include "alu_model.h"
+#include "gen_vectors_parallel.h"
+
+// Number of generation threads.
+#define N_THREADS 4
+
+// Each thread receives a range of A values to process.
+typedef struct {
+    uint8_t        a_start;
+    uint8_t        a_end;    // inclusive
+    vector_block_t result;
+} thread_arg_t;
+
+// Function executed by each thread.
+// Generates all (A, B, OP) combinations for its range of A.
+static void *generate_block(void *arg) {
+    thread_arg_t *targ = (thread_arg_t *)arg;
+
+    // Compute how many entries will be generated.
+    // For each A: 256 values of B x 8 operations.
+    size_t range = (size_t)(targ->a_end - targ->a_start + 1);
+    size_t total = range * 256 * 8;
+
+    targ->result.entries = malloc(total * sizeof(vector_entry_t));
+    if (targ->result.entries == NULL) {
+        perror("malloc");
+        targ->result.count = 0;
+        return NULL;
+    }
+
+    size_t idx = 0;
+
+    for (uint16_t a = targ->a_start; a <= targ->a_end; a++) {
+        for (uint16_t b = 0; b < 256; b++) {
+            for (uint8_t op = 0; op < 8; op++) {
+                alu_result_t r = alu_execute((uint8_t)a, (uint8_t)b, (alu_op_t)op);
+
+                targ->result.entries[idx].a               = (uint8_t)a;
+                targ->result.entries[idx].b               = (uint8_t)b;
+                targ->result.entries[idx].op              = op;
+                targ->result.entries[idx].expected_result = r.result;
+                targ->result.entries[idx].zero            = r.zero;
+                targ->result.entries[idx].carry           = r.carry;
+                targ->result.entries[idx].negative        = r.negative;
+                targ->result.entries[idx].overflow        = r.overflow;
+
+                idx++;
+            }
+        }
+    }
+
+    targ->result.count = idx;
+    return NULL;
+}
+
+int main(void) {
+    pthread_t    threads[N_THREADS];
+    thread_arg_t args[N_THREADS];
+
+    // Split the 256 values of A evenly among the threads.
+    // With N_THREADS = 4: thread 0 processes A from 0..63, thread 1 from 64..127, etc.
+    uint16_t step = 256 / N_THREADS;
+
+    for (int i = 0; i < N_THREADS; i++) {
+        args[i].a_start = (uint8_t)(i * step);
+        args[i].a_end   = (uint8_t)(i * step + step - 1);
+        args[i].result.entries = NULL;
+        args[i].result.count   = 0;
+
+        if (pthread_create(&threads[i], NULL, generate_block, &args[i]) != 0) {
+            perror("pthread_create");
+            return 1;
+        }
+    }
+
+    // Wait for all threads to finish.
+    for (int i = 0; i < N_THREADS; i++) {
+        pthread_join(threads[i], NULL);
+    }
+
+    // Create the output directory if it does not already exist.
+    if (mkdir("build", 0755) != 0 && errno != EEXIST) {
+        perror("mkdir");
+        return 1;
+    }
+
+    // Open the output file and write all blocks in order.
+    FILE *f = fopen("build/alu_vectors.txt", "w");
+    if (f == NULL) {
+        perror("fopen");
+        return 1;
+    }
+
+    size_t total_written = 0;
+
+    for (int i = 0; i < N_THREADS; i++) {
+        vector_block_t *blk = &args[i].result;
+
+        for (size_t j = 0; j < blk->count; j++) {
+            vector_entry_t *e = &blk->entries[j];
+            fprintf(
+                f,
+                "%02X %02X %X %02X %u %u %u %u\n",
+                e->a,
+                e->b,
+                e->op,
+                e->expected_result,
+                e->zero,
+                e->carry,
+                e->negative,
+                e->overflow
+            );
+            total_written++;
+        }
+
+        free(blk->entries);
+    }
+
+    fclose(f);
+    printf("Vectors generated: %zu lines in build/alu_vectors.txt\n", total_written);
+    return 0;
+}
+```
+
+Compile:
+
+```bash
+gcc -Wall -Wextra -std=c2x gen_vectors_parallel.c alu_model.c -o gen_vectors_parallel -pthread
+./gen_vectors_parallel
+```
+
+#### Unit test of the parallel generator
+
+File: `examples/c/test_gen_vectors_parallel.c`
+
+```c
+#include <assert.h>
+#include <stdio.h>
+#include <stdint.h>
+#include "alu_model.h"
+
+// Tests that the C model produces the same result
+// regardless of the execution order, which is
+// the fundamental property that makes parallelization safe.
+static void test_alu_deterministic(void) {
+    // The same input executed twice must yield exactly the same result.
+    alu_result_t r1 = alu_execute(200, 100, ALU_ADD);
+    alu_result_t r2 = alu_execute(200, 100, ALU_ADD);
+
+    assert(r1.result   == r2.result);
+    assert(r1.zero     == r2.zero);
+    assert(r1.carry    == r2.carry);
+    assert(r1.negative == r2.negative);
+    assert(r1.overflow == r2.overflow);
+}
+
+static void test_no_shared_state(void) {
+    // Operations with different inputs must not interfere with each other.
+    // If alu_execute uses global state, this test may fail under parallel execution.
+    alu_result_t add = alu_execute(10,  20,  ALU_ADD);
+    alu_result_t sub = alu_execute(50,  30,  ALU_SUB);
+    alu_result_t and = alu_execute(0xFF, 0x0F, ALU_AND);
+
+    assert(add.result == 30);
+    assert(sub.result == 20);
+    assert(and.result == 0x0F);
+}
+
+int main(void) {
+    test_alu_deterministic();
+    test_no_shared_state();
+
+    printf("Parallel generator tests passed.\n");
+    return 0;
+}
+```
+
+Compile:
+
+```bash
+gcc -Wall -Wextra -std=c2x test_gen_vectors_parallel.c alu_model.c -o test_gen_vectors_parallel
+./test_gen_vectors_parallel
+```
+
+#### What did we learn from this?
+
+```text
+alu_execute uses no global state         -> safe to run in parallel
+each thread has its own buffer           -> no data race on the data
+pthread_join guarantees final ordering   -> deterministic result
+```
+
+This property — functions with no shared state being safe to parallelize — is a fundamental concept both in software and in hardware.
 
 ---
 

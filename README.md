@@ -95,12 +95,6 @@ Verilog_C_Python_ALU_Guide/
 │
 ├── docs/
 |   ├── vol1_files/
-│   |   ├── vol1_part_1.md
-│   |   ├── vol1_part_2.md
-│   |   ├── vol1_part_3.md
-│   |   ├── vol1_part_4.md
-│   |   └── vol1_part_5.md
-|   |
 |   ├── vol2_files/
 |   |
 │   ├── README_vol1.md
