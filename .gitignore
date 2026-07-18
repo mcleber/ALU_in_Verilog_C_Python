@@ -10,10 +10,10 @@
 # FOLDERS
 #===============================
 
-build/
 00_resources/
 executables/
-__pycache__
+build/
+__pycache__/
 
 #===============================
 # C
