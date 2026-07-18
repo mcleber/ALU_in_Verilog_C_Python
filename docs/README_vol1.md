@@ -96,7 +96,7 @@ From now on, whenever we create something important, we will also create a test.
 11. Python generating test vectors.
 12. Concurrency and parallelism in Python.
 
-### Part 4 — Verilog
+### [Part 4 — Verilog](vol1_files/vol1_part_4.md)
 
 13. Basic Verilog.
 14. Basic testbench.
@@ -107,7 +107,7 @@ From now on, whenever we create something important, we will also create a test.
 19. Simple FSM.
 20. Advanced FSM.
 
-### Part 5 — Integrated project
+### [Part 5 — Integrated project]((vol1_files/vol1_part_5.md))
 
 21. Architecture of the integrated project.
 22. C as the reference model.
