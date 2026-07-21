@@ -1,3 +1,4 @@
+<a id="top"></a>
 
 | Title | Verilog, C and Python ALU Practical Guide - Volume 1 |
 |-------|-------|
@@ -115,3 +116,9 @@ From now on, whenever we create something important, we will also create a test.
 24. Verilog as the hardware implementation.
 25. Complete automated flow.
 26. Final checklist.
+
+---
+
+← [Back to README](../README.md) | [↑ Back to top](#top)
+
+Previous: [Part 4 — Verilog](vol1_part_4.md) | Next: [Verilog, C and Python ALU Practical Guide - Volume 2](../README_vol2.md)

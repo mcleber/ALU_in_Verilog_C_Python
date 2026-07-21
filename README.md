@@ -1,3 +1,5 @@
+<a id="top"></a>
+
 # ALU in Verilog, C and Python
 
 🚧 This repository is a work in progress.
@@ -322,3 +324,7 @@ This repository was designed as practical learning material. The main goal is no
 ```text
 understand -> implement -> test -> automate -> integrate -> evolve
 ```
+
+---
+
+[↑ Back to top](#top)

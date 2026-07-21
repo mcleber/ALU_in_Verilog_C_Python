@@ -1,3 +1,5 @@
+<a id="top"></a>
+
 | Title | Part 3 — Python  |
 |-------|-------|
 | File  | `vol1_part_3.md` |
@@ -443,6 +445,6 @@ This example generates many vectors. To start, use just a few. Then increase.
 
 ---
 
-← [Back to Index](../README_vol1.md)
+← [Back to Index](../README_vol1.md) | [↑ Back to top](#top)
 
 Previous: [Part 2 — C](vol1_part_2.md) | Next: [Part 4 — Verilog](vol1_part_4.md)

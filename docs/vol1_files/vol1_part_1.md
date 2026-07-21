@@ -1,3 +1,5 @@
+<a id="top"></a>
+
 | Title | Part 1 — Fundamentals  |
 |-------|-------|
 | File  | `vol1_part_1.md` |
@@ -243,6 +245,6 @@ In this guide, we will always aim for self-checking tests.
 
 ---
 
-← [Back to Index](../README_vol1.md)
+← [Back to Index](../README_vol1.md) | [↑ Back to top](#top)
 
 Next → [Part 2 — C](vol1_part_2.md)
