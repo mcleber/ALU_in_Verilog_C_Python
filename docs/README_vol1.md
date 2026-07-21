@@ -107,7 +107,7 @@ From now on, whenever we create something important, we will also create a test.
 19. Simple FSM.
 20. Advanced FSM.
 
-### [Part 5 — Integrated project]((vol1_files/vol1_part_5.md))
+### [Part 5 — Integrated project](vol1_files/vol1_part_5.md)
 
 21. Architecture of the integrated project.
 22. C as the reference model.
