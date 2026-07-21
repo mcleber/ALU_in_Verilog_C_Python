@@ -11,9 +11,10 @@
 #===============================
 
 00_resources/
-executables/
-build/
 __pycache__/
+executables/
+tb_sim/
+build/
 
 #===============================
 # C
