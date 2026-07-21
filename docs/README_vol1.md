@@ -120,5 +120,3 @@ From now on, whenever we create something important, we will also create a test.
 ---
 
 ← [Back to README](../README.md) | [↑ Back to top](#top)
-
-Previous: [Part 4 — Verilog](vol1_part_4.md) | Next: [Verilog, C and Python ALU Practical Guide - Volume 2](../README_vol2.md)
