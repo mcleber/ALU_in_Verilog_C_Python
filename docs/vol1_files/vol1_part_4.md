@@ -1527,6 +1527,6 @@ This is much closer to a real project.
 
 ---
 
-← [Back to Index](../README_vol1.md) | [↑ Back to top](#top)
+← [Back to Index](../README_vol1.md) | ↑ [Back to top](#top)
 
 Previous: [Part 3 — Python](vol1_part_3.md) | Next: [Part 5 — Integrated project](vol1_part_5.md)

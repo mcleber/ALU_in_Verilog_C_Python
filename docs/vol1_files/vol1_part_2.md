@@ -946,6 +946,6 @@ This property — functions with no shared state being safe to parallelize — i
 
 ---
 
-← [Back to Index](../README_vol1.md) | [↑ Back to top](#top)
+← [Back to Index](../README_vol1.md) | ↑ [Back to top](#top)
 
 Previous: [Part 1 — Fundamentals](vol1_part_1.md) | Next: [Part 3 — Python](vol1_part_3.md)

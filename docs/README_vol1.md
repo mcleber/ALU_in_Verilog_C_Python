@@ -119,4 +119,4 @@ From now on, whenever we create something important, we will also create a test.
 
 ---
 
-← [Back to README](../README.md) | [↑ Back to top](#top)
+← [Back to README](../README.md) | ↑ [Back to top](#top)
